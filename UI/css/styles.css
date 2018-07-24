@@ -19,11 +19,11 @@ ul{
 /*header*/
 
 header{
-	background:#000000;
-	color: #ffffff;
+	background: #343477;
+	/*color: blue;*/
 	padding-top: 30px;
 	min-height: 70px;
-	border-bottom: #e8491d 3px solid;
+	border-bottom: #343477 3px solid;
 }
 
 
@@ -41,7 +41,7 @@ header li{
 }
 
 header .highlight, header .current{
-	color: #e8491d;
+	color: white;
 
 }
 header #myheader{
@@ -131,7 +131,7 @@ header a:hover{
 .foot{
 	padding: 20px;
 	margin-top: 20px;
-    background-color: black;
+    background-color: #1A1A59  ;
     color: #ffffff;
     text-align:center;
 
@@ -236,7 +236,7 @@ width:360px;
 
 .drop-content{
 	display: none;
-	position: absolute;
+	position: fixed;
 	background-color: grey;
 	min-width: 200px;
 	overflow: auto;
