@@ -14,4 +14,4 @@ router.put("/entries/:entryId", entry.update)
 
 router.delete("/entries/:entryId", entry.remove)
 
-module.exports = router;
+export default router;
