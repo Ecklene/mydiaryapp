@@ -10,7 +10,7 @@ app.use(bodyParser.urlencoded({extended:true}));
 app.use("/api/v1", entryRoute);
 
 app.get('/', (req, res) => {
-  res.send('Hello myDairy App');
+  res.send('Welcome to myDairy App');
 });
 
 
