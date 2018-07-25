@@ -16,12 +16,12 @@ function validateEntry(entry) {
 	return Joi.validate(entry, schema)
 }
 
-
+//to view all entries
 const viewAll = (req, res) => {
 	res.send(entries);
 };
 
-
+//to view a single entry
 const view = (req, res) => {
 	const entry = entries.find( e => {
 			return e.id === parseInt(req.params.entryId)
@@ -33,6 +33,10 @@ const view = (req, res) => {
 	}
 	res.send(entry);
 };
+
+/*
+**To post in your entry
+*/
 
 const create = (req, res) => {
 	const { error } = validateEntry(req.body);
@@ -51,6 +55,7 @@ const create = (req, res) => {
 	entries.push(entry);
 	res.status(201).send(entry);
 };
+
 
 const update = (req, res) => {
 	// Look up the entry
