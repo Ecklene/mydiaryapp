@@ -2,7 +2,7 @@
 import mocha from 'mocha';
 import chai from 'chai';
 import chaiHttp from 'chai-http';
-import server from '../index.js';
+import server from './index.js';
 
 let should = chai.should();
 chai.use(chaiHttp);
