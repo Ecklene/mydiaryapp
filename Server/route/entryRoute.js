@@ -1,6 +1,6 @@
 import express from 'express';
 import bodyParser from 'body-parser';
-import entry from './entrycontroller.js';
+import entry from '../controller/entrycontroller.js';
 const router = express.Router();
 
 
@@ -14,4 +14,4 @@ router.put("/entries/:entryId", entry.update)
 
 router.delete("/entries/:entryId", entry.remove)
 
-module.exports = router;
+export default router;
