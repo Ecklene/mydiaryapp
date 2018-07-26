@@ -101,7 +101,7 @@ const remove = (req, res) => {
 	res.status(200).send(entry);
 }
 
-module.exports = {
+export default {
     viewAll,
     view,
     create,
