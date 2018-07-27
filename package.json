@@ -1,13 +1,12 @@
-{ 
+{
   "name": "mydiaryapp",
   "version": "1.0.0",
   "description": "my online diary journal",
   "main": "index.js",
- 
   "scripts": {
     "test": " nyc mocha --compilers js:babel-core/register --timeout 6000 ./test/test.js --exit",
     "start": "nodemon index.js --exec babel-node --presets env",
-     "coverage": "nyc report --reporter=text-lcov | coveralls"
+    "coverage": "nyc report --reporter=text-lcov | coveralls"
   },
   "repository": {
     "type": "git",
@@ -21,6 +20,7 @@
   "homepage": "https://github.com/Ecklene/mydiaryapp#readme",
   "dependencies": {
     "babel-register": "^6.26.0",
+    "bcrypt": "^3.0.0",
     "body-parser": "^1.18.3",
     "express": "^4.16.3",
     "joi": "^13.1.0"
