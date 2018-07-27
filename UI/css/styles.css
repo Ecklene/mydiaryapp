@@ -19,18 +19,19 @@ ul{
 /*header*/
 
 header{
-	background:#000000;
-	color: #ffffff;
+	background: #343477;
+	/*color: blue;*/
 	padding-top: 30px;
 	min-height: 70px;
-	border-bottom: #e8491d 3px solid;
+	border-bottom: #343477 3px solid;
+	font-family: sans-serif;
 }
 
 
 header a{
 	color: #ffffff;
 	text-decoration: none;
-	font-size: 16px;
+	font-size: 20px;
 }
 
 
@@ -41,7 +42,7 @@ header li{
 }
 
 header .highlight, header .current{
-	color: #e8491d;
+	color: white;
 
 }
 header #myheader{
@@ -104,7 +105,7 @@ header a:hover{
 		font-family: "Roboto", sans serif;
 		text-transform: uppercase;
 		outline: 0;
-		background:#e8491d;
+		background:#343477;
 		width: 100%;
 		border: 0;
 		padding:15px;
@@ -114,30 +115,31 @@ header a:hover{
 
 }
 .form button:hover,.form button:active{
-	background: #43A047;
+	background: #343477;
 }
 
 .form .word{
 	margin:15px 0 0;
-	color: orange;
+	color: #1A1A59;
 	font-size: 12px;
 }
 
 .form .word a{
-	color: orange;
+	color: #1A1A59;
 	text-decoration: none;
 }
 
 .foot{
 	padding: 20px;
 	margin-top: 20px;
-    background-color: black;
+    background-color: #1A1A59  ;
     color: #ffffff;
     text-align:center;
+    font-family: sans-serif;
 
 }
 .main-col{
-	font-family: calibri;
+	font-family: sans-serif;
 	text-align: justify;
 }
 .main-col img{
@@ -146,25 +148,51 @@ header a:hover{
 	margin-right: 15px;
 	
 }
+.grid-container{
+display: grid;
+grid-gap:30px 30px;
+grid-template-columns: auto auto auto;
+background-color:#f5f7f8;
+height:860px;
+width:1300px;
+padding:15px;
+} 
+.grid-container1{
+	display: grid;
+	grid-gap:30px 30px;
+	grid-template-columns: auto auto auto;
+	background-color:#f5f7f8;
+	height:400px;
+	width:800px;
+	padding:15px;
+	} 
+.grid-item{
+	background-color:#f5f7f8;
+	border: 1px solid rgba(0,0,0,0.8);
+	padding: 10px;
+	margin: 10;
+}
+
 .main-col h1{
 	font-size: 35px;
-	text-decoration: underline;
-	font-family: arial;
+	text-decoration: none;
+	font-family: sans-serif;
 }
 .main-col p{
 	line-height: 1.7;
+
 }
 .main-col .start{
 	width:30%;
 	padding:15px;
 	margin-top: 10px;
-	background-color: teal;
+	background-color: #1A1A59 ;
 	color: #ffffff;
 	cursor: pointer;
 	text-decoration: none;
 }
 .main-col .start:hover{
-	background-color: black;
+	background-color: #1A1A59;
 
 }
 .logout {
@@ -175,43 +203,8 @@ header a:hover{
 width:360px;
 	padding:3% 0 0;
 	margin: auto;
-
-
-}
-.tb{
-	border-radius: 3px; 
-	width: 90%; 
-	box-shadow: #0000ff 0.1em 0.1em 0.1em 0.1em;
-	margin-top: 20px;
-
-
-}
-.table1{
-	text-align:center;
-	padding:1px; 
-    
-
-
-}
-.tablerow{
-	background-color: grey; 
-	border-color: #fff;  
-	color: #fff;
-}
-.td1{
-	
-	border-color: #fff;  
-	color: #000;
-
-
 }
 
-.des{
-	
-    height:200px;
-    font-size:14pt;
-    float: initial;
-}
 .ig{
 	float: right;
 	cursor: pointer;
@@ -236,7 +229,7 @@ width:360px;
 
 .drop-content{
 	display: none;
-	position: absolute;
+	position: fixed;
 	background-color: grey;
 	min-width: 200px;
 	overflow: auto;
