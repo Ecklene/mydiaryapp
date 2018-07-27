@@ -17,12 +17,13 @@ function validateEntry(entry) {
 }
 
 //to view all entries
-const viewAll = (req, res) => {
+class EntryController{
+      viewAll(req, res) => {
 	res.send(entries);
-};
+}
 
 //to view a single entry
-const view = (req, res) => {
+     view(req, res) => {
 	const entry = entries.find( e => {
 			return e.id === parseInt(req.params.entryId)
 		}
@@ -32,13 +33,12 @@ const view = (req, res) => {
 		return;
 	}
 	res.send(entry);
-};
+    }
 
 /*
 **To post in your entry
 */
-
-const create = (req, res) => {
+      create(req, res) => {
 	const { error } = validateEntry(req.body);
 
 	if(error){
@@ -50,20 +50,16 @@ const create = (req, res) => {
 	const entry = {
 		id: entries.length + 1,
 		title: req.body.title
-	}
 
 	entries.push(entry);
 	res.status(201).send(entry);
-};
+    }
 
-
-const update = (req, res) => {
+      update(req, res) => {
 	// Look up the entry
 	// If not existing, return error 404
 	const entry = entries.find( e => {
-			return e.id === parseInt(req.params.entryId)
-		}
-	);
+			return e.id === parseInt(req.params.entryId);
 	if (!entry) {
 		res.status(404).send("The Entry with the given ID was not found");
 		return;
@@ -83,9 +79,10 @@ const update = (req, res) => {
 	//Return the updated course
 	entry.title = req.body.title;
 	res.status(200).send(entry);
+   }
 }
 
-const remove = (req, res) => {
+     remove(req, res) => {
 	// look up the id of the particular entry
 	// if not present, return error 404
 
@@ -93,10 +90,10 @@ const remove = (req, res) => {
 			return e.id === parseInt(req.params.entryId)
 		}
 	);
+
 	if (!entry) {
 		res.status(404).send("The Entry with the given ID was not found");
 		return;
-	} 
 
 	// delete the entry
 	const index = entries.indexOf(entry);
@@ -104,12 +101,7 @@ const remove = (req, res) => {
 
 	// send the deleted resource back to the client
 	res.status(200).send(entry);
-}
+  }
 
-export default {
-    viewAll,
-    view,
-    create,
-    update,
-    remove
-};
+
+export default  new EntryController()
