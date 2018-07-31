@@ -1,14 +1,14 @@
 language: node_js
 node:
-  -"8.10.0"
+  -"10.7.0"
 
-# script:
-#   -npm install
-#   -npm test
+script:
+  -npm install
+  -npm test
 
 after_script:
   -npm run coverage
-  # - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
+  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
 
 # env:
 #  global:
