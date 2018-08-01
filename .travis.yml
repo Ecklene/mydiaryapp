@@ -8,7 +8,7 @@ script:
 
 after_script:
   -npm run coverage
-  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
+  # - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
 
 # env:
 #  global:
