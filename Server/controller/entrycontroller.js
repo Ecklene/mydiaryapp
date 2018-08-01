@@ -18,8 +18,11 @@ function validateEntry(entry) {
 
 
 const viewAll = (req, res) => {
-	res.send(entries);
+	res.status(200).send(entries);
 };
+if (!entries) {
+	res.status(404).send("The Entries were not found");
+}
 
 
 const view = (req, res) => {
@@ -31,7 +34,7 @@ const view = (req, res) => {
 		res.status(404).send("The Entry with the given ID was not found");
 		return;
 	}
-	res.send(entry);
+	res.status(200).send(entry);
 };
 
 const create = (req, res) => {

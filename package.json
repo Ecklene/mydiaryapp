@@ -4,10 +4,13 @@
   "description": "my online diary journal",
   "main": "index.js",
   "scripts": {
-    "test": " nyc mocha ./test/test --compilers js:babel-core/register nyc --reporter=html --reporter=text timeout 6000 --exit ",
-    "start": "nodemon index.js --exec babel-node --presets env",
+    "test": " nyc mocha ./test/test --compilers js:babel-core/register timeout 6000 --exit ",
+    "start:dev": "nodemon --watch Server --exec babel-node Server/index.js",
+    "db": "babel-node Server/model/server.js",
+    "migrate": "nodemon ./Server/model/server.js --exec babel-node --presets env",
     "coverage": "nyc report --reporter=text-lcov | coveralls"
-  },
+
+  }, 
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Ecklene/mydiaryapp.git"
@@ -21,7 +24,9 @@
   "dependencies": {
     "body-parser": "^1.18.3",
     "express": "^4.16.3",
-    "joi": "^13.1.0"
+    "joi": "^13.1.0",
+     "jsonwebtoken": "^8.3.0",
+     "pg": "^7.4.3"     
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
