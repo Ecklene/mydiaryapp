@@ -1,1 +1,2 @@
 # mydiaryapp
+[![Coverage Status](https://coveralls.io/repos/github/Ecklene/mydiaryapp/badge.svg?branch=ft-fixapi)](https://coveralls.io/github/Ecklene/mydiaryapp?branch=ft-fixapi)    [![Build Status](https://travis-ci.org/Ecklene/mydiaryapp.svg?branch=readapi)](https://travis-ci.org/Ecklene/mydiaryapp)
