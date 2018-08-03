@@ -1,17 +1,16 @@
-import express from 'express';
-import bodyParser from 'body-parser';
-import entry from '../controller/entrycontroller.js';
-const router = express.Router();
+// import express from 'express';
+// import entry from '../controller/EntryController.js';
+// const router = express.Router();
 
 
-router.get("/entries", entry.viewAll);
+// router.get("/entries", entry.viewAll);
 
-router.get("/entries/:entryId", entry.view);
+// router.get("/entries/:entryId", entry.view);
 
-router.post("/entries", entry.create)
+// router.post("/entries", entry.create)
 
-router.put("/entries/:entryId", entry.update)
+// router.put("/entries/:entryId", entry.update)
 
-router.delete("/entries/:entryId", entry.remove)
+// router.delete("/entries/:entryId", entry.remove)
 
-export default router;
+// export default router;

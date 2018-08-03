@@ -1,12 +1,10 @@
 import express from 'express';
 import bodyParser from 'body-parser';
+import pg from 'pg';
 import Joi from 'joi';
-
-const entries = [
-{ id: 1, title: 'Travelling, I have been dreaming of travelling for a very long time.'},
-{ id: 2, title: 'Cooking is one of my best hobby. when i am stressed or need a liitle boost, i simply cook.'},
-{ id: 3, title: 'How to win and influence people by Dale Carnigie is one of the best book i have ever read.'},
-];
+import users from '../models/users'
+import entries from '../model/entries'
+import db from '../model/database';
 
 function validateEntry(entry) {
 	const schema = {
@@ -16,23 +14,38 @@ function validateEntry(entry) {
 	return Joi.validate(entry, schema)
 }
 
-
 const viewAll = (req, res) => {
 	res.send(entries);
-};
-
+		db.query('SELECT * FROM entries')
+		done();
+		if(err){
+			console.log(err);
+		    res.status(400).send(err);
+		}
+		res.status(200).send(entries)
+		.json({
+			status: 'succesful',
+			message: 'bring out all list',
+		});	
+  
 
 const view = (req, res) => {
 	const entry = entries.find( e => {
 			return e.id === parseInt(req.params.entryId)
+		});
+	db.query('SELECT * FROM users ORDER BY id ASC')
+		query.on('end', () => {
+		done();
+		res.status(200).send(entries)
+		.json({
+			status: 'succesful',
+			message: 'Display a Single Entry list',
+		})
+		if (!entry) {
+			res.status(404).send("The Entry with the given ID was not found");
 		}
-	);
-	if (!entry) {
-		res.status(404).send("The Entry with the given ID was not found");
-		return;
 	}
-	res.send(entry);
-};
+}
 
 const create = (req, res) => {
 	const { error } = validateEntry(req.body);
@@ -40,25 +53,25 @@ const create = (req, res) => {
 	if(error){
 		res.status(400).send(error.details[0].message);
 		return;
-	}
+    }
+    const text = ('INSERT INTO TITLE entries(title) VALUES($1) RETURNING id')
+    const values = [user.title]
+    db.query(text, values, (err, result) => {
+        if (err) {
+          console.log(err.stack);
+        }
 
-	console.log(req.body);
 	const entry = {
-		id: entries.length + 1,
 		title: req.body.title
 	}
 
-	entries.push(entry);
-	res.status(201).send(entry);
-};
 
 const update = (req, res) => {
 	// Look up the entry
 	// If not existing, return error 404
 	const entry = entries.find( e => {
 			return e.id === parseInt(req.params.entryId)
-		}
-	);
+		});
 	if (!entry) {
 		res.status(404).send("The Entry with the given ID was not found");
 		return;
@@ -73,34 +86,27 @@ const update = (req, res) => {
 		res.status(400).send(error.details[0].message);
 		return;
 	}
+		db.query('UPDATE entries, title=($2) WHERE id($1)', [title, id],
+		client.query('SELECT * FROM addentry BY id ASC')
+        query.on('row', (row) => {
+        	results.push(row);
+        });
 
+        query.on('end', function(){
+        done();	
+        return res.status(200).json(results);
+        });
+		if(err){
+			console.log(err);
+		    res.status(400).send(err);
+		}	
+		
 	//Update course
 	//Return the updated course
 	entry.title = req.body.title;
 	res.status(200).send(entry);
 }
-
-const remove = (req, res) => {
-	// look up the id of the particular entry
-	// if not present, return error 404
-
-	const entry = entries.find( e => {
-			return e.id === parseInt(req.params.entryId)
-		}
-	);
-	if (!entry) {
-		res.status(404).send("The Entry with the given ID was not found");
-		return;
-	} 
-
-	// delete the entry
-	const index = entries.indexOf(entry);
-	entries.splice(index, 1);
-
-	// send the deleted resource back to the client
-	res.status(200).send(entry);
-}
-
+})
 export default {
     viewAll,
     view,
@@ -108,3 +114,24 @@ export default {
     update,
     remove,
 };
+
+// // const remove = (req, res) => {
+// // 	// look up the id of the particular entry
+// // 	// if not present, return error 404
+
+// // 	const entry = entries.find( e => {
+// // 			return e.id === parseInt(req.params.entryId)
+// // 		});
+// // 	if (!entry) {
+// // 		res.status(404).send("The Entry with the given ID was not found");
+// // 		return;
+// // 	} 
+
+// // 	// delete the entry
+// // 	const index = entries.indexOf(entry);
+// // 	entries.splice(index, 1);
+
+// // 	// send the deleted resource back to the client
+// // 	res.status(200).send(entry);
+// // }
+// // })
